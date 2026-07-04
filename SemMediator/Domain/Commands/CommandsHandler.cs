@@ -1,4 +1,5 @@
-﻿using SemMediator.Domain.Shared.Enums;
+﻿using Microsoft.EntityFrameworkCore;
+using SemMediator.Domain.Shared.Enums;
 using SemMediator.Domain.Shared.Interfaces;
 using SemMediator.Domain.Shared.Records;
 
@@ -7,15 +8,19 @@ namespace SemMediator.Domain.Commands
     public class CommandsHandler : ICommandHandler
     {
         public CurrentRequest CurrentRequest { get; }
+        public DbContext DbContext { get; }
 
         private readonly IFilterHandler FilterHandler;
         private readonly ILogHandler LogHandler;
+
         public CommandsHandler(
             CurrentRequest _currentRequest, 
+            DbContext _dbContext,
             IFilterHandler _filterHandler,
             ILogHandler _logHandler)
         {
             CurrentRequest = _currentRequest;
+            DbContext = _dbContext;
             FilterHandler = _filterHandler;
             LogHandler = _logHandler;
         }

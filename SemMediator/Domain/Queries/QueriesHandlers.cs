@@ -1,4 +1,5 @@
-﻿using SemMediator.Domain.Shared.Enums;
+﻿using Microsoft.EntityFrameworkCore;
+using SemMediator.Domain.Shared.Enums;
 using SemMediator.Domain.Shared.Interfaces;
 using SemMediator.Domain.Shared.Records;
 
@@ -7,19 +8,21 @@ namespace SemMediator.Domain.Queries
     public class QueriesHandlers : IQueryHandler
     {
         public CurrentRequest CurrentRequest { get; }
+        public DbContext DbContext { get; }
         private readonly ILogHandler LogHandler;
 
         public QueriesHandlers(
         CurrentRequest _currentRequest,
+        DbContext _dbContext,
         ILogHandler _logHandler)
         {
             CurrentRequest = _currentRequest;
+            DbContext = _dbContext;
             LogHandler = _logHandler;
         }
 
         public async Task<QueryResult> Query(IQuery query)
         {
-
             var errors = await query.GetErrorAsync(this);
             if (errors != null)
             {
