@@ -6,7 +6,7 @@ namespace SemMediator.Domain.Queries
 {
     public class QueriesHandlers : IQueryHandler
     {
-        private readonly CurrentRequest CurrentRequest;
+        public CurrentRequest CurrentRequest { get; }
         private readonly ILogHandler LogHandler;
 
         public QueriesHandlers(
