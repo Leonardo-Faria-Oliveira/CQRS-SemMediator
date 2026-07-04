@@ -1,0 +1,6 @@
+@SemMediator_HostAddress = http://localhost:5205
+
+GET {{SemMediator_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
