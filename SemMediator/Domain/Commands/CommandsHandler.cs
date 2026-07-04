@@ -6,7 +6,8 @@ namespace SemMediator.Domain.Commands
 {
     public class CommandsHandler : ICommandHandler
     {
-        private readonly CurrentRequest CurrentRequest;
+        public CurrentRequest CurrentRequest { get; }
+
         private readonly IFilterHandler FilterHandler;
         private readonly ILogHandler LogHandler;
         public CommandsHandler(

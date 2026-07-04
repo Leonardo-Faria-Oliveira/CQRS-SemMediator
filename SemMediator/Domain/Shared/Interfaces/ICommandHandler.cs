@@ -4,6 +4,8 @@ namespace SemMediator.Domain.Shared.Interfaces
 {
     public interface ICommandHandler
     {
-        public Task<CommandResult> Handle(ICommand command);
+        public CurrentRequest CurrentRequest { get; }
+
+        public Task<CommandResult> Handle(ICommand commands);
     }
 }
