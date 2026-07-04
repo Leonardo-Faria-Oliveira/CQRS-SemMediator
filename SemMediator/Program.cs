@@ -1,11 +1,16 @@
+using SemMediator.Domain.Config;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
+
+var localConnectionStringName = "Connection";
+builder.Services.AddInfraestructure(builder.Configuration, localConnectionStringName);
+
 
 var app = builder.Build();
 
